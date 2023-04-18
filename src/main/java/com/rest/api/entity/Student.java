@@ -1,12 +1,15 @@
 package com.rest.api.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Student {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String name;
 	private String city;
@@ -14,9 +17,8 @@ public class Student {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Student(long id, String name, String city) {
+	public Student(String name, String city) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.city = city;
 	}

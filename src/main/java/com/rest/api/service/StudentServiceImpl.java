@@ -17,8 +17,7 @@ public class StudentServiceImpl implements StudentService {
 	StudentDao studentDao;
 
 	public StudentServiceImpl() {
-		list.add(new Student(1, "Mikinj", "Surat"));
-		list.add(new Student(2, "Shivani", "Surat"));
+		
 	}
 
 	@Override
@@ -34,14 +33,16 @@ public class StudentServiceImpl implements StudentService {
 	}
 	
 	@Override
-	public List<Student> updateStudent(Student s) {
-		studentDao.save(s);
-		return studentDao.findAll();
+	public Student updateStudent(Student s) {
+		Student stud = studentDao.getReferenceById(s.getId());
+		stud.setName(s.getName());
+		stud.setCity(s.getCity());
+		return studentDao.save(stud);
 	}
 	
 	@Override
 	public List<Student> deleteStudent(long id) {
-		studentDao.delete(studentDao.getById(id));
+		studentDao.delete(studentDao.getReferenceById(id));
 		return studentDao.findAll();
 	}
 }

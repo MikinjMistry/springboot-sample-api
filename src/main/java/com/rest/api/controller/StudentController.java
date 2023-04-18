@@ -36,7 +36,7 @@ public class StudentController {
 	}
 	
 	@PutMapping("/students")
-	public List<Student> updateStudent(@RequestBody Student stud) {		
+	public Student updateStudent(@RequestBody Student stud) {		
 		return studentService.updateStudent(stud); 
 	}
 	
